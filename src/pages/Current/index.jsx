@@ -24,7 +24,9 @@ function Current() {
           <div className="current_container">
             <div>
               <span>
-                {weather.location.country} / {weather.location.name}
+                <h3>
+                  {weather.location.country}, {weather.location.name}
+                </h3>
               </span>
             </div>
             <div className="current_condition">
@@ -37,12 +39,24 @@ function Current() {
             <div>
               <BsThermometerSun />
               <span>
-                {weather.current.temp_c}C / {weather.current.temp_f}F
+                <span className="current_number">{weather.current.temp_c}</span>
+                C /{" "}
+                <span className="current_number">{weather.current.temp_f}</span>
+                F
               </span>
             </div>
             <div className="current_info">
-              <span>humidity: {weather.current.humidity}%</span>
-              <span>cloud: {weather.current.cloud}%</span>
+              <span>
+                humidity:{" "}
+                <span className="current_number">
+                  {weather.current.humidity}
+                </span>
+                %
+              </span>
+              <span>
+                cloud:{" "}
+                <span className="current_number">{weather.current.cloud}</span>%
+              </span>
             </div>
           </div>
         );
