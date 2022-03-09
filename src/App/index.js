@@ -1,10 +1,10 @@
 import Layout from "../Layout";
-import Main from "../pages/Main";
+import Current from "../pages/Current";
 
 function App() {
   return (
     <Layout>
-      <Main />
+      <Current />
     </Layout>
   );
 }

@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
+import "./layout.scss";
 
 function Layout({ children }) {
   return (
-    <div>
-      <main>{children}</main>
+    <div className="layout_container">
+      <main className="layout_main">{children}</main>
     </div>
   );
 }
