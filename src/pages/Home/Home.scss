@@ -6,7 +6,7 @@ $big-font: 1.5em;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        gap: 10px;
+        gap: 20px;
 
         padding: 10px 5px;
 
@@ -32,6 +32,40 @@ $big-font: 1.5em;
     }
 
     &_thermo {
-        font-size: $big-font;
+        font-size: 2.5em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 8px;
+    }
+}
+
+.forecast {
+    &_corousel {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+
+        & > *:not(:last-child) {
+            border-right: 1px solid rgba(0, 0, 0, 0.342);
+        }
+
+        &::-webkit-scrollbar {
+            background-color: rgba(0, 0, 0, 0.171);
+            border-radius: 10px;
+            height: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.61);
+        }
     }
 }
