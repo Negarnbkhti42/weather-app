@@ -1,3 +1,5 @@
+$big-font: 1.5em;
+
 .current {
     &_container {
         display: flex;
@@ -13,15 +15,16 @@
             flex-direction: row;
             justify-content: flex-start;
             align-items: center;
+            width: 100%;
         }
 
-        & h3 {
+        & h2 {
             margin: 0;
         }
     }
 
     &_number {
-        font-size: 1.5em;
+        font-size: $big-font;
     }
 
     &_info {
@@ -29,6 +32,6 @@
     }
 
     &_thermo {
-        font-size: 1.5em;
+        font-size: $big-font;
     }
 }

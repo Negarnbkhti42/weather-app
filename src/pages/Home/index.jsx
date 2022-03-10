@@ -8,14 +8,12 @@ import Section from "../../components/Section";
 
 function Home() {
   const [weather, setWeather] = useState();
-  const [location, setLocation] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getCurrentWeather()
       .then((res) => {
-        setLocation(res.location);
-        setWeather(res.current);
+        setWeather({ ...res });
       })
       .catch((err) => console.log(err))
       .finally(() => setIsLoading(false));
@@ -29,34 +27,42 @@ function Home() {
           <div className="current_container">
             <div>
               <span>
-                <h3>
-                  {location.country}, {location.name}
-                </h3>
+                <h2>
+                  {weather.location.country}, {weather.location.name}
+                </h2>
               </span>
             </div>
             <div className="current_condition">
               <img
-                src={weather.condition.icon}
-                alt={`${weather.condition.text} icon`}
+                src={weather.current.condition.icon}
+                alt={`${weather.current.condition.text} icon`}
               />
-              <span>{weather.condition.text}</span>
+              <span>
+                <h3>{weather.current.condition.text}</h3>
+              </span>
             </div>
             <div>
               <span className="current_thermo">
                 <BsThermometerSun />
               </span>
               <span>
-                <span className="current_number">{weather.temp_c}</span>C /{" "}
-                <span className="current_number">{weather.temp_f}</span>F
+                <span className="current_number">{weather.current.temp_c}</span>
+                C /{" "}
+                <span className="current_number">{weather.current.temp_f}</span>
+                F
               </span>
             </div>
             <div className="current_info">
               <span>
-                humid:{" "}
-                <span className="current_number">{weather.humidity}</span>%
+                humidity:{" "}
+                <span className="current_number">
+                  {weather.current.humidity}
+                </span>
+                %
               </span>
               <span>
-                cloud: <span className="current_number">{weather.cloud}</span>%
+                cloud:{" "}
+                <span className="current_number">{weather.current.cloud}</span>%
               </span>
             </div>
           </div>
