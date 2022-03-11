@@ -6,6 +6,7 @@ import { BsThermometerSun } from "react-icons/bs";
 import "./Home.scss";
 import Section from "../../components/Section";
 import ForecastCard from "../../components/ForecastCard";
+import Search from "../../components/Search";
 
 function Home() {
   const [weather, setWeather] = useState();
@@ -26,6 +27,7 @@ function Home() {
       if (weather) {
         component = (
           <>
+            <Search />
             <Section>
               <div className="current_container">
                 <div>
