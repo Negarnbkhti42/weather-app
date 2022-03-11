@@ -52,11 +52,7 @@ function Home() {
                     <span className="current_number">
                       {weather.current.temp_c}
                     </span>
-                    C /{" "}
-                    <span className="current_number">
-                      {weather.current.temp_f}
-                    </span>
-                    F
+                    C
                   </span>
                 </div>
                 <div className="current_info">
