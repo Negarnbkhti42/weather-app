@@ -6,7 +6,6 @@ import { BsThermometerSun } from "react-icons/bs";
 import "./Home.scss";
 import Section from "../../components/Section";
 import ForecastCard from "../../components/ForecastCard";
-import Search from "../../components/Search";
 import SearchBar from "../../components/SearchBar";
 
 function Home() {
