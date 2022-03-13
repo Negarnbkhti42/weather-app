@@ -2,8 +2,7 @@ import { useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import "./search.scss";
 
-function Search() {
-  const [input, setInput] = useState("");
+function Search({ onChange, value }) {
   const [open, setOpen] = useState(false);
   const ref = useRef();
 
@@ -14,7 +13,6 @@ function Search() {
 
   const cancelSearch = () => {
     setOpen(false);
-    setInput("");
   };
 
   return (
@@ -24,8 +22,8 @@ function Search() {
       </span>
       <input
         type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
+        value={value}
+        onChange={onChange}
         className={`search_input ${open && "search_input-open"}`}
         placeholder="search..."
         ref={ref}

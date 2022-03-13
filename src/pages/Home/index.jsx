@@ -7,6 +7,7 @@ import "./Home.scss";
 import Section from "../../components/Section";
 import ForecastCard from "../../components/ForecastCard";
 import Search from "../../components/Search";
+import SearchBar from "../../components/SearchBar";
 
 function Home() {
   const [weather, setWeather] = useState();
@@ -27,7 +28,7 @@ function Home() {
       if (weather) {
         component = (
           <>
-            <Search />
+            <SearchBar />
             <Section>
               <div className="current_container">
                 <div>
@@ -79,6 +80,7 @@ function Home() {
               <div className="forecast_corousel">
                 {weather.forecast.forecastday[0].hour.map((hour) => (
                   <ForecastCard
+                    key={hour.time}
                     hour={hour.time.slice(11)}
                     icon={hour.condition.icon}
                     condition={hour.condition.text}
