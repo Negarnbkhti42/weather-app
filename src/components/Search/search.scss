@@ -8,15 +8,12 @@ $icon-size: 40px;
         align-items: center;
         gap: 10px;
 
-        padding: 10px 0 10px 10px;
+        padding: 10px;
         border-radius: 50px;
 
         background-color: rgba(0, 0, 0, 0.247);
-
-        // position: absolute;
-        // top: 20px;
-        // left: 20px;
         align-self: flex-start;
+        width: 100%;
     }
 
     &_icon {
@@ -30,17 +27,26 @@ $icon-size: 40px;
     &_input {
         all: unset;
         width: 0;
-
-        transition: all 0.3s ease-in-out;
-
-        &-open {
-            width: 300px;
-        }
     }
 
     &_button {
         all: unset;
-        margin-right: 10px;
         cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2em;
+    }
+}
+
+.search_container-open {
+    & .search {
+        &_input {
+            width: 100%;
+        }
+
+        &_button {
+            display: flex;
+        }
     }
 }

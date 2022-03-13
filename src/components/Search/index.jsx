@@ -1,22 +1,18 @@
 import { useRef, useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import "./search.scss";
 
-function Search({ onChange, value }) {
+function Search({ onChange, value, onClear }) {
   const [open, setOpen] = useState(false);
   const ref = useRef();
 
   const handleSearch = () => {
-    setOpen(true);
-    ref.current.focus();
-  };
-
-  const cancelSearch = () => {
-    setOpen(false);
+    setOpen(!open);
+    open || ref.current.focus();
   };
 
   return (
-    <div className="search_container">
+    <div className={`search_container ${open && "search_container-open"}`}>
       <span className="search_icon" onClick={handleSearch}>
         <AiOutlineSearch />
       </span>
@@ -28,11 +24,9 @@ function Search({ onChange, value }) {
         placeholder="search..."
         ref={ref}
       />
-      {open && (
-        <button className="search_button" type="reset" onClick={cancelSearch}>
-          X
-        </button>
-      )}
+      <button className="search_button" type="reset" onClick={onClear}>
+        <AiOutlineClose />
+      </button>
     </div>
   );
 }
