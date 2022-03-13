@@ -27,7 +27,6 @@ function Home() {
       if (weather) {
         component = (
           <>
-            <SearchBar />
             <Section>
               <div className="current_container">
                 <div>

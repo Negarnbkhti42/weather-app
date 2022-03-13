@@ -1,4 +1,10 @@
 .searchbar {
     &_container {
+        position: absolute;
+        top: 30px;
+        left: 10vw;
+        max-width: 80vw;
+
+        z-index: 500;
     }
 }

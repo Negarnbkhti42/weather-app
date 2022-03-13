@@ -4,12 +4,11 @@ import Search from "../Search";
 import "./searchBar.scss";
 
 function SearchBar() {
-  const [input, setInput] = useState("");
   const [results, setResults] = useState([]);
   var searchTimeout = undefined;
 
   const search = (value) => {
-    getSearchResults(value)
+    getSearchResults(value || " ")
       .then((data) => {
         console.log(data);
         setResults(data);
@@ -17,11 +16,8 @@ function SearchBar() {
       .catch((err) => console.log(err));
   };
 
-  const handleChange = (e) => {
+  const handleChange = (value) => {
     clearTimeout(searchTimeout);
-
-    let value = e.target.value;
-    setInput(value);
 
     searchTimeout = setTimeout(() => {
       search(value);
@@ -30,11 +26,7 @@ function SearchBar() {
 
   return (
     <div className="searchbar_container">
-      <Search
-        value={input}
-        onChange={handleChange}
-        onClear={() => setInput("")}
-      />
+      <Search onChange={handleChange} />
       <div className="searchBar_results">
         {results.map((result) => (
           <div key={result.id}>
