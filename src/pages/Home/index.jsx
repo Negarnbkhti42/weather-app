@@ -6,7 +6,6 @@ import { BsThermometerSun } from "react-icons/bs";
 import "./Home.scss";
 import Section from "../../components/Section";
 import ForecastCard from "../../components/ForecastCard";
-import SearchBar from "../../components/SearchBar";
 
 function Home() {
   const [weather, setWeather] = useState();
