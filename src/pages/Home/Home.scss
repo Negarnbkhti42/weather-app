@@ -1,3 +1,5 @@
+@import "../../styles/mixins";
+
 $big-font: 1.5em;
 
 .current {
@@ -32,10 +34,8 @@ $big-font: 1.5em;
     }
 
     &_thermo {
+        @include icon-display;
         font-size: 2.5em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         margin-right: 8px;
     }
 }
