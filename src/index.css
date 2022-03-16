@@ -17,6 +17,6 @@ code {
     monospace;
 }
 
-:root * {
+* {
   box-sizing: border-box;
 }

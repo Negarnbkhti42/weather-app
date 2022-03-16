@@ -1,0 +1,43 @@
+@import "../../styles/mixins";
+
+.searchbar {
+    &_container {
+        position: absolute;
+        top: 30px;
+        left: 10vw;
+        width: 80vw;
+    }
+
+    &_icon {
+        @include icon-display;
+    }
+
+    &_input {
+        width: 100%;
+    }
+
+    &_options {
+        position: absolute;
+        z-index: 500;
+        background: rgba(0, 0, 0, 0.836);
+
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        border-radius: 5px;
+    }
+
+    &_option {
+        width: 100%;
+        padding: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #ccc;
+        border-radius: 5px;
+
+        cursor: pointer;
+    }
+}

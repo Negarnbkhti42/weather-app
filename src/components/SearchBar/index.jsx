@@ -2,6 +2,9 @@ import { useRef } from "react";
 import { useEffect, useState } from "react";
 
 import { getSearchResults } from "../../services/httpService/getSearchResults";
+import { AiOutlineSearch } from "react-icons/ai";
+
+import "./searchbar.scss";
 
 function SearchBar() {
   const [input, setInput] = useState("");
@@ -25,30 +28,40 @@ function SearchBar() {
   }, [wrapperRef]);
 
   const handleChange = ({ target }) => {
-    let { value } = target;
+    let { value } = { ...target };
     setInput(value);
+    value = value.trim();
     showOptions || setShowOptions(true);
 
-    clearInterval(searchTimeout);
-
+    clearTimeout(searchTimeout);
     searchTimeout = setTimeout(() => {
-      if (value.length >= 3) {
-        getSearchResults(value.toLowerCase())
-          .then((data) => setOptions(data))
-          .catch((err) => console.log(err));
-      }
-    }, 1000);
+      getSearchResults(value)
+        .then((data) => setOptions(data))
+        .catch((err) => console.log(err));
+    }, 2000);
   };
 
   const handleClick = () => {};
 
   return (
-    <div ref={wrapperRef}>
-      <input type="text" value={input} onChange={handleChange} />
-      <div>
+    <div className="searchbar_container" ref={wrapperRef}>
+      <span className="searchbar_icon">
+        <AiOutlineSearch />
+      </span>
+      <input
+        className="searchbar_input"
+        type="text"
+        value={input}
+        onChange={handleChange}
+      />
+      <div className="searchbar_options">
         {showOptions &&
           options.map((opt) => (
-            <div key={opt.id} onClick={handleClick}>
+            <div
+              className="searchbar_option"
+              key={opt.id}
+              onClick={handleClick}
+            >
               {opt.country}, {opt.region}, {opt.name}
             </div>
           ))}
