@@ -1,6 +1,7 @@
 @import "../../styles/mixins";
 
 $search-background: rgba(61, 61, 61, 0.918);
+$search-size: 43px;
 
 .searchbar {
     &_container {
@@ -8,11 +9,15 @@ $search-background: rgba(61, 61, 61, 0.918);
         z-index: 500;
         top: 30px;
         left: 10vw;
-        width: 80vw;
+        width: $search-size;
+        height: $search-size;
+        overflow: hidden;
+        border-radius: 50px;
+        transition: width 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        &:focus-within {
+            width: 80vw;
+        }
     }
 
     &_searchField {
@@ -20,19 +25,18 @@ $search-background: rgba(61, 61, 61, 0.918);
         flex-direction: row;
         align-items: center;
         gap: 10px;
-
-        background: $search-background;
-        height: 40px;
+        background: rgba(61, 61, 61, 0.918);
+        height: $search-size;
         width: 80vw;
-
-        padding: 5px 10px;
-        border-radius: 50px;
     }
 
     &_icon {
         @include icon-display;
-        color: rgb(255, 255, 255);
+        border-radius: 50px;
+        color: white;
         font-size: 1.5em;
+        height: $search-size;
+        min-width: $search-size;
     }
 
     &_input {
@@ -48,8 +52,10 @@ $search-background: rgba(61, 61, 61, 0.918);
     &_options {
         background: $search-background;
 
-        width: 90%;
-        margin-top: 5px;
+        position: absolute;
+        z-index: 500;
+        width: 70vw;
+        top: calc($search-size + 30px + 5px);
         display: flex;
         flex-direction: column;
         justify-content: flex-start;

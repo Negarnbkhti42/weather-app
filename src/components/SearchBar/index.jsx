@@ -45,19 +45,24 @@ function SearchBar() {
   const handleClick = () => {};
 
   return (
-    <div className="searchbar_container" ref={wrapperRef}>
-      <div className="searchbar_searchField">
-        <span className="searchbar_icon">
-          <AiOutlineSearch />
-        </span>
-        <input
-          className="searchbar_input"
-          type="text"
-          value={input}
-          onChange={handleChange}
-          ref={inputRef}
-          placeholder="search..."
-        />
+    <>
+      <div className="searchbar_container" ref={wrapperRef}>
+        <div className="searchbar_searchField">
+          <span
+            className="searchbar_icon"
+            onClick={() => inputRef.current.focus()}
+          >
+            <AiOutlineSearch />
+          </span>
+          <input
+            className="searchbar_input"
+            type="text"
+            value={input}
+            onChange={handleChange}
+            ref={inputRef}
+            placeholder="search..."
+          />
+        </div>
       </div>
       <div className="searchbar_options">
         {showOptions &&
@@ -71,7 +76,7 @@ function SearchBar() {
             </div>
           ))}
       </div>
-    </div>
+    </>
   );
 }
 
