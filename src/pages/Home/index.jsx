@@ -58,17 +58,21 @@ function Home() {
                 <div className="current_info">
                   <span>
                     humidity:{" "}
-                    <span className="current_number">
-                      {weather.current.humidity}
+                    <span>
+                      <span className="current_number">
+                        {weather.current.humidity}
+                      </span>
+                      %
                     </span>
-                    %
                   </span>
                   <span>
                     cloud:{" "}
-                    <span className="current_number">
-                      {weather.current.cloud}
+                    <span>
+                      <span className="current_number">
+                        {weather.current.cloud}
+                      </span>
+                      %
                     </span>
-                    %
                   </span>
                 </div>
               </div>

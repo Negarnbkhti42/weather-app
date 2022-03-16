@@ -1,27 +1,55 @@
 @import "../../styles/mixins";
 
+$search-background: rgba(61, 61, 61, 0.918);
+
 .searchbar {
     &_container {
         position: absolute;
+        z-index: 500;
         top: 30px;
         left: 10vw;
         width: 80vw;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &_searchField {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        background: $search-background;
+        height: 40px;
+        width: 80vw;
+
+        padding: 5px 10px;
+        border-radius: 50px;
     }
 
     &_icon {
         @include icon-display;
+        color: rgb(255, 255, 255);
+        font-size: 1.5em;
     }
 
     &_input {
+        all: unset;
         width: 100%;
+        color: rgb(255, 255, 255);
+
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.644);
+        }
     }
 
     &_options {
-        position: absolute;
-        z-index: 500;
-        background: rgba(0, 0, 0, 0.836);
+        background: $search-background;
 
-        width: 100%;
+        width: 90%;
+        margin-top: 5px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -35,9 +63,13 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        color: #ccc;
+        color: rgb(255, 255, 255);
         border-radius: 5px;
 
         cursor: pointer;
+
+        &:hover {
+            background: rgba(77, 77, 77, 0.836);
+        }
     }
 }

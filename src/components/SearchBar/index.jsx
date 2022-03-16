@@ -11,6 +11,7 @@ function SearchBar() {
   const [options, setOptions] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
   const wrapperRef = useRef();
+  const inputRef = useRef();
 
   var searchTimeout = undefined;
 
@@ -28,32 +29,36 @@ function SearchBar() {
   }, [wrapperRef]);
 
   const handleChange = ({ target }) => {
-    let { value } = { ...target };
-    setInput(value);
-    value = value.trim();
-    showOptions || setShowOptions(true);
-
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(() => {
       getSearchResults(value)
         .then((data) => setOptions(data))
         .catch((err) => console.log(err));
     }, 2000);
+
+    let { value } = { ...target };
+    setInput(value);
+    value = value.trim();
+    showOptions || setShowOptions(true);
   };
 
   const handleClick = () => {};
 
   return (
     <div className="searchbar_container" ref={wrapperRef}>
-      <span className="searchbar_icon">
-        <AiOutlineSearch />
-      </span>
-      <input
-        className="searchbar_input"
-        type="text"
-        value={input}
-        onChange={handleChange}
-      />
+      <div className="searchbar_searchField">
+        <span className="searchbar_icon">
+          <AiOutlineSearch />
+        </span>
+        <input
+          className="searchbar_input"
+          type="text"
+          value={input}
+          onChange={handleChange}
+          ref={inputRef}
+          placeholder="search..."
+        />
+      </div>
       <div className="searchbar_options">
         {showOptions &&
           options.map((opt) => (
