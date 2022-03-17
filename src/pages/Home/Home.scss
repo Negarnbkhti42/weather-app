@@ -15,7 +15,6 @@ $big-font: 1.5em;
         & > div {
             display: flex;
             flex-direction: row;
-            justify-content: flex-start;
             align-items: center;
             width: 100%;
         }
@@ -31,10 +30,11 @@ $big-font: 1.5em;
 
     &_info {
         gap: 20px;
+        justify-content: space-between;
         & > span {
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
         }
     }

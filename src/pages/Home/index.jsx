@@ -74,6 +74,15 @@ function Home() {
                       %
                     </span>
                   </span>
+                  <span>
+                    wind:{" "}
+                    <span>
+                      <span className="current_number">
+                        {weather.current.wind_kph}
+                      </span>
+                      kph
+                    </span>
+                  </span>
                 </div>
               </div>
             </Section>
