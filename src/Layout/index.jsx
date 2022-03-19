@@ -6,7 +6,7 @@ function Layout({ children }) {
   return (
     <div className="layout_container">
       <SearchBar />
-      <main className="layout_main">{children}</main>
+      <div className="layout_main">{children}</div>
     </div>
   );
 }

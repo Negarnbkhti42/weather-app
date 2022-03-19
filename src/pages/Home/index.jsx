@@ -14,6 +14,7 @@ function Home() {
   useEffect(() => {
     getCurrentWeather()
       .then((res) => {
+        console.log(res);
         setWeather({ ...res });
       })
       .catch((err) => console.log(err))
@@ -93,10 +94,24 @@ function Home() {
                     key={hour.time}
                     hour={hour.time.slice(11)}
                     icon={hour.condition.icon}
-                    condition={hour.condition.text}
+                    condition={`${hour.temp_c}c`}
                   />
                 ))}
               </div>
+            </Section>
+            <Section className="forecast_container">
+              {weather.forecast.forecastday.map((day) => (
+                <div key={day.date} className="forecast_day">
+                  <img
+                    src={day.day.condition.icon}
+                    alt={`${day.day.condition.text} condition`}
+                  />
+                  <span>{day.date}</span>
+                  <span>
+                    {day.day.maxtemp_c}/{day.day.mintemp_c}
+                  </span>
+                </div>
+              ))}
             </Section>
           </>
         );

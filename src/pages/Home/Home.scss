@@ -16,11 +16,18 @@ $big-font: 1.5em;
             display: flex;
             flex-direction: row;
             align-items: center;
-            width: 100%;
         }
 
         & h2 {
             margin: 0;
+        }
+    }
+
+    &_condition {
+        & img {
+            width: 40px;
+            height: 40px;
+            object-fit: none;
         }
     }
 
@@ -30,6 +37,7 @@ $big-font: 1.5em;
 
     &_info {
         gap: 20px;
+        width: 100%;
         justify-content: space-between;
         & > span {
             display: flex;
@@ -76,5 +84,13 @@ $big-font: 1.5em;
             border-radius: 10px;
             background-color: rgba(0, 0, 0, 0.61);
         }
+    }
+
+    &_day {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
 }
