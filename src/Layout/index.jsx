@@ -1,10 +1,16 @@
 import PropTypes from "prop-types";
+import { Route, Routes } from "react-router-dom";
 import "./layout.scss";
 
 function Layout({ children }) {
   return (
     <div className="layout_container">
-      <div className="layout_main">{children}</div>
+      <Routes>
+        <Route
+          path="/"
+          element={<div className="layout_main">{children}</div>}
+        />
+      </Routes>
     </div>
   );
 }

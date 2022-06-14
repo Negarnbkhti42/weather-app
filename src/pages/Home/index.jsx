@@ -6,20 +6,25 @@ import { BsThermometerSun } from "react-icons/bs";
 import "./Home.scss";
 import Section from "../../components/Section";
 import ForecastCard from "../../components/ForecastCard";
+import { useSearchParams } from "react-router-dom";
 
 function Home() {
   const [weather, setWeather] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     getCurrentWeather()
       .then((res) => {
-        console.log(res);
         setWeather({ ...res });
       })
       .catch((err) => console.log(err))
       .finally(() => setIsLoading(false));
   }, []);
+
+  useEffect(() => {
+    console.log(searchParams.get("location"));
+  }, [searchParams]);
 
   const getComponent = () => {
     let component = <p>loading...</p>;
@@ -102,14 +107,14 @@ function Home() {
             <Section className="forecast_container">
               {weather.forecast.forecastday.map((day) => (
                 <div key={day.date} className="forecast_day">
+                  <span>
+                    {day.day.maxtemp_c}/{day.day.mintemp_c}
+                  </span>
+                  <span>{day.date.replaceAll("-", "/")}</span>
                   <img
                     src={day.day.condition.icon}
                     alt={`${day.day.condition.text} condition`}
                   />
-                  <span>{day.date}</span>
-                  <span>
-                    {day.day.maxtemp_c}/{day.day.mintemp_c}
-                  </span>
                 </div>
               ))}
             </Section>
